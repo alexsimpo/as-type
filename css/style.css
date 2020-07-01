@@ -1,0 +1,121 @@
+/* Globals */
+
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    background-color: #C7AE6F; /* BG colour */
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #7A7669; /* Header Colour */
+}
+
+#variables {
+    margin-top: 20%;
+    opacity: 0;
+}
+
+.stat {
+    margin: 0 60px 0 20px;
+    display: inline-block;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 1em;
+    color: #FBF1D8; /* Stat Header and Tab Colour */
+    margin: 0;
+    opacity: 0.6;
+    text-align: left;
+}
+
+.stats {
+    font-size: 4em;
+    color: #7A7669; /* Stat Colour */
+    opacity: 1;
+    float: left;
+}
+
+#content-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+body {
+    margin: 0;
+}
+
+/* Header */
+
+
+.tab {
+    opacity: 0.6;
+    margin-top: 35px;
+    float: right;
+}
+
+#timeBar {
+    width: 100%;
+    height: 10px;
+}
+  
+#timeBar div {
+    height: 100%;
+    text-align: right;
+    padding: 0;
+    line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+    width: 0;
+    background-color: #FBF1D8; /* Progress Colour */
+    box-sizing: border-box;
+    opacity: 0.6;
+}
+
+header h1 {
+    float: left;
+    text-align: left;
+    margin-top: 10px;
+    margin-right: 0;
+}
+
+header {
+    height: 100px;
+}
+
+/* Words */
+
+#words {
+    margin-top: 20%;
+    height: 150px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.word-active, .word{
+    padding: 2px 6px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.word-active letter, .word-active{
+    background-color: #948153; /* Active BG Colour */
+}
+
+letter {
+    font-size: 1.5em;
+    color: #FBF1D8; /* Letter Colour */
+    font-weight: 500;
+    opacity: 0.6;
+    padding-right: 1px;
+}
+
+input {
+    outline: 0px solid transparent;
+    border: 0px;
+    font-size: 1.5em;
+    width: 600px;
+    margin: 25px auto;
+    color: 	#FBF1D8; /* Input Letter Colour */
+    caret-color: #7A7669;
+}

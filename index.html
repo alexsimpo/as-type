@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>as-type test</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="timeBar">
+            <div></div>
+        </div>
+        <div id="content-container">
+        <header>
+            <h1>as-type test</h1>
+            <h3 class="tab">press tab to reset</h3>
+        </header>
+
+        <div class="container text-center">
+            <!-- Typing container -->
+            <div class="row" id="type">
+                <div id="words">
+                </div>
+                <input type="text" class="type-box" id="word-input" autofocus>
+            </div>
+
+            <!-- Timer cotainer -->
+            <div class="row" id="variables">
+                <div class="stat">
+                    <h3 id="h3wpm">wpm</h3>
+                    <span class="stats" id="wpm"> </span>
+                </div>
+                <div class="stat">
+                    <h3 id="h3raw">raw</h3>
+                    <span class="stats" id="rawwpm"> </span>
+                </div>
+                <div class="stat">
+                    <h3 id="h3acc">acc</h3>
+                    <span class="stats" id="percent"> </span>
+                </div>
+                <div class="stat">
+                    <h3 id="h3char">characters</h3>
+                    <span class="stats" id="characters"> </span>
+                </div>
+                <div class="stat">
+                    <h3 id="h3time">time</h3>
+                    <span class="stats" id="timeValue"> </span>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="js/words.js"></script>
+    <script src="js/main.js"></script>
+</html>
