@@ -1,7 +1,8 @@
 window.addEventListener('load', init);
 
 // Globals
-let time = null;
+let timeCalc = 30;
+let time = 30;
 let isPlaying = false;
 let randomWords = [];
 let activeWord;
@@ -21,6 +22,31 @@ const characterStat = document.querySelector('#characters');
 const timeStat = document.querySelector('#timeValue');
 const allWordContainter = document.querySelector('#type');
 const allStats = document.querySelector('#variables');
+const ten = document.querySelector('#ten-s');
+const thirty = document.querySelector('#thirty-s');
+const sixty = document.querySelector('#sixty-s');
+const activeButton = document.querySelector('button.active');
+
+ten.addEventListener('click', function() {
+    document.querySelector('button.active').setAttribute("class", "");
+    ten.setAttribute("class", "active");
+    timeCalc = 10;
+    time = 10;
+});
+
+thirty.addEventListener('click', function() {
+    document.querySelector('button.active').setAttribute("class", "");
+    thirty.setAttribute("class", "active");
+    timeCalc = 30;
+    time = 30;
+});
+
+sixty.addEventListener('click', function() {
+    document.querySelector('button.active').setAttribute("class", "");
+    sixty.setAttribute("class", "active");
+    timeCalc = 60;
+    time = 60;
+});
 
 // Inititalize Game
 function init() {
@@ -32,10 +58,6 @@ function init() {
     wordInput.addEventListener('input', startTimer);
     // Start matching
     wordInput.addEventListener('input', startMatch);
-    // Call countdown every second
-    setInterval(countdown, 1000);
-    // Check game status
-    setInterval(checkStatus, 50);
     // Add a reset button
     reset();
 }
@@ -45,7 +67,7 @@ function createWords(words) {
     // Random array index
     let ranIndex;
     // Output word to html and array
-    for (i = 0; i < 40; i++) {
+    for (i = 0; i < 180; i++) {
         ranIndex = Math.floor(Math.random() * words.length);
         let wordCreated = words[ranIndex];
         var node = document.createElement("div"); // Create a <span> element
@@ -104,6 +126,7 @@ function matchWords() {
             activeWord[letterPosition].style.borderBottom = "2px solid #7A7669"; 
             compare();
         }
+        
         letterPosition++; 
     } while (letterPosition < inputChar.length);
 
@@ -111,6 +134,13 @@ function matchWords() {
         var e = window.event || e;
         if(isPlaying && e.keyCode == 32){
             var current = document.querySelector(".word-active");
+            var rect = current.getBoundingClientRect();
+            var x = current.nextSibling.getBoundingClientRect();
+
+            if (rect.top !== x.top) {
+                wordBox.scrollBy(0, 39);
+            }
+
             current.className = current.className.replace("-active", "");
             allWords[ranPosition + 1].className += "-active";
             inputHistory.push(wordInput.value);
@@ -130,9 +160,11 @@ function matchWords() {
 function startTimer() {
     if (isPlaying) {
         return;
-    } else if (!isPlaying && time == null) {
-        time = 31;
-        progress(30, 30, $('#timeBar'))
+    } else if (!isPlaying) {
+        time += 1;
+        setInterval(countdown, 1000);
+        setInterval(checkStatus, 50);
+        progress(time, time, $('#timeBar'))
         return isPlaying = true;
     } else {
         wordInput.disabled = "disabled";
@@ -171,16 +203,16 @@ function checkStatus() {
 function calculateResults() {
     allWordContainter.style.display = "none";
     $("#variables").fadeTo("slow", 1);
-    const wpm = Math.round(correctLetters.length / 4.79 / 30 * 60);
+    const wpm = Math.round(correctLetters.length / 4.79 / timeCalc * 60);
     wordPM.innerHTML = `${wpm}`;
     const rawString = inputHistory.join("");
-    const rawwpm = Math.round(rawString.length / 4.79 / 30 * 60);
+    const rawwpm = Math.round(rawString.length / 4.79 / timeCalc * 60);
     rawWordPM.innerHTML = `${rawwpm}`;
-    const percentCorrect = Math.round(wpm/rawwpm * 100);
+    const percentCorrect = Math.floor(wpm/rawwpm * 100);
     percentDiv.innerHTML = `${percentCorrect} %`;
     const numCharacters = rawString.length - correctLetters.length;
     characterStat.innerHTML = `${correctLetters.length} / ${numCharacters}`;
-    timeStat.innerHTML = '30';
+    timeStat.innerHTML = timeCalc;
 }
 
 // Reset function

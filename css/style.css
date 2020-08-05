@@ -50,10 +50,31 @@ body {
 /* Header */
 
 
-.tab {
+.tab, ul {
     opacity: 0.6;
     margin-top: 35px;
     float: right;
+}
+
+ul {
+    margin-right: 20px;
+}
+
+ul button {
+    
+    color: #FBF1D8;
+    border: none;
+    cursor: pointer;
+}
+
+ul button:hover {
+    color: #7A7669;
+    border: none;
+}
+
+ul button.active {
+    opacity: 1;
+    color: #7A7669;
 }
 
 #timeBar {
@@ -86,8 +107,9 @@ header {
 /* Words */
 
 #words {
+    position: relative;
     margin-top: 20%;
-    height: 150px;
+    height: 80px;
     overflow: hidden;
     text-align: left;
 }
@@ -114,8 +136,10 @@ input {
     outline: 0px solid transparent;
     border: 0px;
     font-size: 1.5em;
-    width: 600px;
+    height: 50px;
+    width: 1000px;
     margin: 25px auto;
+    background-color: rgba(0, 0, 0, 0.05);
     color: 	#FBF1D8; /* Input Letter Colour */
     caret-color: #7A7669;
 }
